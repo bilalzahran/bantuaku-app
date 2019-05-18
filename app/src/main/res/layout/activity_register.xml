@@ -34,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:id="@+id/etEmail"
                 android:hint="johndoe@email.com"/>
         </LinearLayout>
 
@@ -52,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:id="@+id/etNama"
                 android:hint="John Doe"/>
         </LinearLayout>
 
@@ -63,13 +65,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
+                android:text="Kata Sandi"
                 android:textSize="20dp"
                 android:textColor="@color/colorPrimary"/>
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:id="@+id/etPassword"
                 android:hint="************"/>
         </LinearLayout>
 
@@ -81,7 +84,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Konfirmasi Password"
+                android:text="Konfirmasi Kata Sandi"
                 android:textSize="20dp"
                 android:textColor="@color/colorPrimary"/>
             <android.support.design.widget.TextInputEditText
@@ -95,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:id="@+id/btnDaftar"
             android:text="Daftar"
             android:textColor="@color/White"
             android:textStyle="bold"
