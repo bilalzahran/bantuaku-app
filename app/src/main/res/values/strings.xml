@@ -21,4 +21,9 @@
     <string name="berhasil_desc">Anda telah berhasil membuat akun Bantuku!</string>
     <string name="silahkan_login">Silahkan login</string>
     <string name="selesai">Selesai</string>
+
+    <!--Login-->
+    <string name="asuk">Masuk</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="daftar_login">Daftar</string>
 </resources>

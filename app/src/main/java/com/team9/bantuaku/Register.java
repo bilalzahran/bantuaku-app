@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ public class Register extends AppCompatActivity {
     private TextInputEditText etPassword;
     private TextInputEditText etRepassword;
     private TextInputEditText etTelepon;
+    private TextView linkMasuk;
     private Button btnDaftar;
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
@@ -43,10 +45,20 @@ public class Register extends AppCompatActivity {
         etRepassword = findViewById(R.id.etRePassword);
         etTelepon = findViewById(R.id.etPhone);
         btnDaftar = findViewById(R.id.btnDaftar);
+        linkMasuk = findViewById(R.id.linkMasuk);
 
         database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         myRef = database.getReference("User");
+
+        linkMasuk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
