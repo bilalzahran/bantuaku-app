@@ -5,22 +5,22 @@ import java.util.List;
 
 public class User {
     private String nama;
-    private String email;
     private String no_telp;
-    private String password;
     private int point;
     private int selesai;
     private List<String> keahlian = new ArrayList<>();
     private  String biografi;
+    private  String foto;
 
-    public User(String nama, String email, String password) {
+
+
+    public User(String nama, String no_telp) {
         this.nama = nama;
-        this.email = email;
-        this.password = password;
-        this.no_telp = "Silahkan isi nomor telepon anda";
+        this.no_telp = no_telp;
         keahlian.add("Belum memiliki keahlian");
         this.point = 0;
         this.selesai = 0;
+        this.foto = "https://imgplaceholder.com/420x320/cccccc/757575/glyphicon-user";
         this.biografi = "Anda belum memperkenalkan diri anda";
     }
 
@@ -28,16 +28,8 @@ public class User {
         return nama;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getNo_telp() {
         return no_telp;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public int getPoint() {
@@ -60,16 +52,8 @@ public class User {
         this.nama = nama;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public void setNo_telp(String no_telp) {
         this.no_telp = no_telp;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setPoint(int point) {
@@ -86,5 +70,13 @@ public class User {
 
     public void setBiografi(String biografi) {
         this.biografi = biografi;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

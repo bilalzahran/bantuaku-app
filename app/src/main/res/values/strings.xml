@@ -3,4 +3,22 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!--Registration Activity-->
+    <string name="header_image">Header Image </string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="nama">Nama</string>
+    <string name="email">Email</string>
+    <string name="no_telepon">Telepon</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="ulangi_kata_sandi">Konfirmasi Kata Sandi</string>
+    <string name="daftar">Daftar</string>
+    <string name="sudah_punya_akun">Sudah Punya Akun?</string>
+    <string name="masuk">Masuk</string>
+
+    <!--Registration Confirmation-->
+    <string name="selamat">Selamat!</string>
+    <string name="berhasil_desc">Anda telah berhasil membuat akun Bantuku!</string>
+    <string name="silahkan_login">Silahkan login</string>
+    <string name="selesai">Selesai</string>
 </resources>
