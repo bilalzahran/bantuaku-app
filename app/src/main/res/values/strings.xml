@@ -26,4 +26,15 @@
     <string name="asuk">Masuk</string>
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="daftar_login">Daftar</string>
+
+    <!--Error-->
+    <string name="err_nama">Hanya huruf dan spasi putih yang diizinkan</string>
+    <string name="err_no_name">Nama harus diisi</string>
+    <string name="err_email">Format email tidak valid</string>
+    <string name="err_no_email">Email harus diisi</string>
+    <string name="err_telp">Nomor telepon minimal 12 angka</string>
+    <string name="err_no_telp">Nomor telepon harus diisi</string>
+    <string name="err_password">Kata sandi harus mengandung setidaknya 6 karakter, termasuk huruf besar / kecil dan angka</string>
+    <string name="err_no_password">Password harus diisi</string>
+    <string name="err_password_conf">Konfirmasi kata sandi tidak cocok</string>
 </resources>

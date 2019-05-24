@@ -24,6 +24,7 @@
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/masuk"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/colorPrimary"
         android:textSize="27sp"
         android:textStyle="bold" />
@@ -47,9 +48,10 @@
                 android:drawableStart="@drawable/email"
                 android:drawablePadding="10dp"
                 android:hint="@string/email"
+                android:fontFamily="@font/poppins_medium"
                 android:inputType="text"
                 android:textColorHint="@color/colorPrimary"
-                android:textSize="19sp" />
+                android:textSize="16sp" />
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
@@ -74,9 +76,10 @@
                 android:drawableStart="@drawable/password"
                 android:drawablePadding="10dp"
                 android:hint="@string/kata_sandi"
+                android:fontFamily="@font/poppins_medium"
                 android:inputType="textPassword"
                 android:textColorHint="@color/colorPrimary"
-                android:textSize="19sp" />
+                android:textSize="16sp" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -88,6 +91,7 @@
         android:layout_marginTop="80dp"
         android:background="@drawable/button_style"
         android:text="@string/masuk"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/White"
         android:textStyle="bold"/>
 
@@ -97,7 +101,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="@string/belum_punya_akun"
-        android:textSize="19sp" />
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -105,9 +110,10 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:text="@string/daftar_login"
+        android:fontFamily="@font/poppins_medium"
         android:id="@+id/linkDaftar"
         android:textColor="@color/colorPrimary"
         android:clickable="true"
-        android:textSize="19sp" />
+        android:textSize="16sp" />
 
 </LinearLayout>

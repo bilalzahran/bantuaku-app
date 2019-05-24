@@ -22,12 +22,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="@string/selamat"
+        android:fontFamily="@font/poppins_medium"
         android:textSize="30sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/berhasil_desc"
+        android:fontFamily="@font/poppins_medium"
         android:textSize="20sp"
         android:textAlignment="center"/>
     <!--<TextView-->
@@ -44,8 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_vertical"
         android:layout_marginTop="150dp"
-        android:id="@+id/selesai"
+        android:id="@+id/btnSelesai"
         android:text="@string/selesai"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/White"
         android:background="@drawable/button_style"/>
 </LinearLayout>
