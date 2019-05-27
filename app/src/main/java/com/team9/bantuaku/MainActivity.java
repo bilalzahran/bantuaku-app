@@ -2,6 +2,7 @@ package com.team9.bantuaku;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
@@ -9,39 +10,46 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private TextView mTextMessage;
     private FirebaseAuth mAuth;
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        loadFragment(new TaskListFragment());
+        BottomNavigationView navmenu = findViewById(R.id.nav_view);
+        navmenu.setOnNavigationItemSelectedListener(this);
         mAuth = FirebaseAuth.getInstance();
-        mTextMessage.setText(mAuth.getCurrentUser().getEmail());
+
     }
 
+    private boolean loadFragment(Fragment fragment){
+        if (fragment !=null){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame,fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Fragment fragment = null;
+
+        switch (menuItem.getItemId()){
+            case R.id.navigation_task:
+                fragment = new TaskListFragment();
+                break;
+            case R.id.navigation_add_task:
+                fragment = new AddTaskFragment();
+                break;
+            case R.id.navigation_profile:
+                fragment = new ProfileFragment();
+                break;
+        }
+        return loadFragment(fragment);
+    }
 }

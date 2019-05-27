@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Bantuaku</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Task</string>
+    <string name="title_dashboard">Add Task</string>
+    <string name="title_notifications">Profile</string>
 
     <!--Registration Activity-->
     <string name="header_image">Header Image </string>

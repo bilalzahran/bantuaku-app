@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "596721001858",
+    "firebase_url": "https://bantuaku-team9.firebaseio.com",
+    "project_id": "bantuaku-team9",
+    "storage_bucket": "bantuaku-team9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596721001858:android:10ae4a131b040da7",
+        "android_client_info": {
+          "package_name": "com.team9.bantuaku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596721001858-h75v04396l3h1i8a8k9fp7nn87bv5c14.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team9.bantuaku",
+            "certificate_hash": "51bae5fc7dd0a3f12d62072836881c7784592c33"
+          }
+        },
+        {
+          "client_id": "596721001858-navk375uanbpt0fpollpn4pk37ge39v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEmoT7UX__fTQsF3p6OydLRjkHNeFy-_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596721001858-navk375uanbpt0fpollpn4pk37ge39v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
