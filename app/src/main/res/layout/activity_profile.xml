@@ -169,7 +169,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#40E0D0"
-                            android:text="aaaa"
+                            android:text="test commit"
                             android:textColor="@color/White"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
