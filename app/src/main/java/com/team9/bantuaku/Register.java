@@ -103,7 +103,7 @@ public class Register extends AppCompatActivity {
                               String nama = etNama.getText().toString();
                               FirebaseUser user = mAuth.getCurrentUser();
                               User penggunabaru = new User(nama ,telepon);
-                              daftarPenggunaBaru(penggunabaru);
+                              daftarPenggunaBaru(penggunabaru,user.getUid());
                               Intent intent = new Intent(Register.this, RegisterConfirmation.class);
                               startActivity(intent);
                               finish();
@@ -125,9 +125,7 @@ public class Register extends AppCompatActivity {
 
     }
 
-    private void daftarPenggunaBaru(User penggunabaru){
-
-        String key = myRef.push().getKey();
+    private void daftarPenggunaBaru(User penggunabaru,String key){
         myRef.child(key).setValue(penggunabaru);
     }
 }
