@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            tools:layout_editor_absoluteX="-38dp"
+            tools:layout_editor_absoluteY="0dp"
+            android:id="@+id/toolbar_profile"
+            tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textColor="@color/White"
+                    android:layout_marginLeft="180dp"
+                    />
+
+                <ImageButton
+                    android:id="@+id/notification_profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="140dp"
+                    android:src="@drawable/ic_notifications_black_24dp"
+                    android:background="@color/colorPrimary"
+
+                    />
+
+        </android.support.v7.widget.Toolbar>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="120dp"
+                    android:src="@drawable/person"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/White"
+                    android:id="@+id/poto_profile"
+                    app:civ_circle_background_color="#FFC0C0C0"
+                    />
+                <TextView
+                    android:id="@+id/nama_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="aa"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    android:layout_marginTop="20dp"
+                    />
+                <Button
+                    android:id="@+id/hubungi_profile"
+                    android:drawableLeft="@drawable/phone"
+                    android:text="HUBUNGI"
+                    android:textSize="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_hubungi"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginRight="150dp"
+                    android:layout_marginTop="30dp">
+                        <TextView
+                            android:id="@+id/poin_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="187"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:id="@+id/selesai_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="56"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/poin_profile"
+                            android:layout_marginTop="5dp"
+                            android:text="Point"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/selesai_profile"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="5dp"
+                            android:text="Selesai"
+                            android:textColor="@color/colorPrimary"
+                            />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Biografi"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    />
+                <TextView
+                    android:id="@+id/biografi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="aa"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#000000"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Keahlian"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/keahlian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="aa"
+                    android:textColor="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#40E0D0"
+                            android:text="aaaa"
+                            android:textColor="@color/White"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="2dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:text="aaa"
+                            android:textColor="@color/White"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="2dp"/>
+
+                </LinearLayout>
+
+
+        </LinearLayout>
+        </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
