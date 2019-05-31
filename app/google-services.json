@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "596721001858-fnnnqudss7jgddmuogu4s2f7q02jclen.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team9.bantuaku",
+            "certificate_hash": "6d2c6059c8a2b0fe356cb2592afd0347fded10d3"
+          }
+        },
+        {
           "client_id": "596721001858-h75v04396l3h1i8a8k9fp7nn87bv5c14.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
