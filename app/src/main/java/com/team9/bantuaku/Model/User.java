@@ -12,7 +12,16 @@ public class User {
     private  String biografi;
     private  String foto;
 
+    public User(){
 
+    }
+    public User(String nama, String no_telp, List<String> keahlian, String foto, String biografi){
+        this.nama = nama;
+        this.no_telp = no_telp;
+        this.keahlian = keahlian;
+        this.foto = foto;
+        this.biografi = biografi;
+    }
 
     public User(String nama, String no_telp) {
         this.nama = nama;
@@ -64,8 +73,8 @@ public class User {
         this.selesai = selesai;
     }
 
-    public void setKeahlian(String keahlian) {
-        this.keahlian.add(keahlian);
+    public void setKeahlian(List<String> keahlian) {
+        this.keahlian = keahlian;
     }
 
     public void setBiografi(String biografi) {

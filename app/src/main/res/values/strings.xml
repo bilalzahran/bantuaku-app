@@ -21,7 +21,6 @@
     <string name="berhasil_desc">Anda telah berhasil membuat akun Bantuku!</string>
     <string name="silahkan_login">Silahkan login</string>
     <string name="selesai">Selesai</string>
-
     <!--Login-->
     <string name="asuk">Masuk</string>
     <string name="belum_punya_akun">Belum punya akun?</string>
@@ -37,4 +36,12 @@
     <string name="err_password">Kata sandi harus mengandung setidaknya 6 karakter, termasuk huruf besar / kecil dan angka</string>
     <string name="err_no_password">Password harus diisi</string>
     <string name="err_password_conf">Konfirmasi kata sandi tidak cocok</string>
+
+    <!--Profil-->
+    <string name="profil">Profil</string>
+    <string name="hubungi">Hubungi</string>
+    <string name="poin">Poin</string>
+    <string name="tentang">Tentang</string>
+    <string name="keahlian">Keahlian</string>
+    <string name="edit_profil">Edit Profil</string>
 </resources>

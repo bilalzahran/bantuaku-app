@@ -2,16 +2,17 @@ package com.team9.bantuaku;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,13 +23,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
-import static android.support.constraint.Constraints.TAG;
 
 public class ProfileFragment extends Fragment {
-    private TextView namaUser;
+    private TextView namaUser,pointUser,jumlahTaskUser,tentangUser;
     private Button btnLogout;
+    private ImageButton editProfile;
     private FirebaseUser User;
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -38,22 +39,34 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         //Toolbar init
-        Toolbar toolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)view.findViewById(R.id.toolbar_profile);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setTitle("");
 
         namaUser = (TextView)view.findViewById(R.id.tv_namaUser);
+        pointUser = (TextView)view.findViewById(R.id.tv_poin_profil);
+        jumlahTaskUser = (TextView)view.findViewById(R.id.tv_selesai_profil);
+        tentangUser = (TextView)view.findViewById(R.id.tv_tentang);
         btnLogout = (Button)view.findViewById(R.id.btnLogout);
+        editProfile = (ImageButton)view.findViewById(R.id.edit_profile);
+
         User = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("User").child(User.getUid());
         System.out.println(reference);
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String nama = (String) dataSnapshot.child("nama").getValue();
-                System.out.println(nama);
+                String tentang = (String) dataSnapshot.child("biografi").getValue();
+                String point = (String) dataSnapshot.child("point").getValue().toString();
+                String selesai = (String)dataSnapshot.child("selesai").getValue().toString();
+//                System.out.println(nama);
                 namaUser.setText(nama);
+                pointUser.setText(point);
+                jumlahTaskUser.setText(selesai);
+                tentangUser.setText(tentang);
             }
 
             @Override
@@ -69,6 +82,14 @@ public class ProfileFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), Login.class);
                 startActivity(intent);
                 getActivity().finish();
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),EditProfile.class);
+                startActivity(intent);
             }
         });
         return view;
