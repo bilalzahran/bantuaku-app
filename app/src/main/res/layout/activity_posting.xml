@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Posting">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_posting"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Posting"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title"
+            android:textColor="@color/White"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_posting"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pekerjaan :"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="3"
+            android:background="@drawable/edittext_shape"
+            android:layout_marginTop="5dp"
+            android:id="@+id/edittext_pekerjaan"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi :"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:lines="3"
+            android:background="@drawable/edittext_shape"
+            android:layout_marginTop="5dp"
+            android:id="@+id/edittext_deskripsi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="Keahlian"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="UI/UX"
+                android:background="@drawable/button_keahlian_posting"
+                android:id="@+id/uiux"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:text="Prgorammer"
+                android:layout_toRightOf="@+id/uiux"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_keahlian_posting"
+                android:id="@+id/programmer"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:text="Front End"
+                android:layout_toRightOf="@+id/programmer"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_keahlian_posting"
+                android:id="@+id/frontend"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:text="Back End"
+                android:layout_below="@+id/uiux"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_keahlian_posting"
+                android:id="@+id/backend"
+                />
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:text="Data Scientist"
+                android:layout_below="@+id/programmer"
+                android:layout_toRightOf="@+id/backend"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_keahlian_posting"
+                android:id="@+id/datascientist"
+                />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Security"
+                android:layout_below="@+id/uiux"
+                android:layout_toRightOf="@+id/datascientist"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/button_keahlian_posting"
+                android:id="@+id/security"
+                />
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:text="Business Analyst"
+                android:layout_below="@+id/backend"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_keahlian_posting"
+                android:id="@+id/business"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
