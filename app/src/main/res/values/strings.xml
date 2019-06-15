@@ -44,4 +44,10 @@
     <string name="tentang">Tentang</string>
     <string name="keahlian">Keahlian</string>
     <string name="edit_profil">Edit Profil</string>
+
+   <!--Edit foto profil-->
+    <string name="edit_foto_profil">Edit Foto Profil</string>
+    <string name="hapus_foto">Hapus Foto Profil</string>
+    <string name="ambil_gallery">Upload Foto dari Galeri</string>
+    <string name="ambil_foto">Ambil Foto Melalui Kamera</string>
 </resources>

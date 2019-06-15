@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="edit_foto">
+        <item>Hapus Foto Profil</item>
+        <item>Upload Foto dari Galeri</item>
+        <item>Ambil Foto Melalui Kamera</item>
+    </string-array>
+</resources>
