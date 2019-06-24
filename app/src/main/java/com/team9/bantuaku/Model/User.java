@@ -29,7 +29,7 @@ public class User {
         keahlian.add("Belum memiliki keahlian");
         this.point = 0;
         this.selesai = 0;
-        this.foto = "https://imgplaceholder.com/420x320/cccccc/757575/glyphicon-user";
+        this.foto = " ";
         this.biografi = "Anda belum memperkenalkan diri anda";
     }
 

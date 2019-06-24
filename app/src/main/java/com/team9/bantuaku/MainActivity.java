@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         BottomNavigationView navmenu = findViewById(R.id.nav_view);
         navmenu.setOnNavigationItemSelectedListener(this);
         mAuth = FirebaseAuth.getInstance();
-
     }
 
     private boolean loadFragment(Fragment fragment){

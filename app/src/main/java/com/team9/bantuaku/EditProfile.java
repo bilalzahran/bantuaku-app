@@ -53,6 +53,7 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
         //Init Custom Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -65,6 +66,7 @@ public class EditProfile extends AppCompatActivity {
         etTentang = (EditText) findViewById(R.id.etTentang);
         etTelepon = (EditText) findViewById(R.id.etTelepon);
         linkEditFotoProfil = (TextView) findViewById(R.id.btnEditFoto);
+
         //Firabase Storage
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
@@ -140,6 +142,7 @@ public class EditProfile extends AppCompatActivity {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
                     Log.i(TAG,"Successfull uploading");
                 }
             }).addOnFailureListener(new OnFailureListener() {

@@ -3,7 +3,7 @@
     package="com.team9.bantuaku">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-feature android:name="android.hardware.camera2" android:required="true"/>
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
