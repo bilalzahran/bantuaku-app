@@ -50,4 +50,12 @@
     <string name="hapus_foto">Hapus Foto Profil</string>
     <string name="ambil_gallery">Upload Foto dari Galeri</string>
     <string name="ambil_foto">Ambil Foto Melalui Kamera</string>
+
+    <!--Posting Bantuan-->
+    <string name="post_bantuan_title">Posting Bantuan</string>
+    <string name="input_judul_bantuan">Nama Pekerjaan</string>
+    <string name="input_deskripsi_bantuan">Deskripsi Pekerjaan</string>
+    <string name="bayaran">Bayaran</string>
+    <string name="rupiah">Rp.</string>
+    <string name="target">Target</string>
 </resources>
