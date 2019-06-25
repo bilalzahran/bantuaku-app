@@ -5,4 +5,15 @@
         <item>Upload Foto dari Galeri</item>
         <item>Ambil Foto Melalui Kamera</item>
     </string-array>
+
+    <string-array name="keahlian">
+        <item>UI/UX</item>
+        <item>Programmer</item>
+        <item>Front-end</item>
+        <item>Back-end</item>
+        <item>Data Scientist</item>
+        <item>Security</item>
+        <item>Business Analyst</item>
+        <item>Designer</item>
+    </string-array>
 </resources>

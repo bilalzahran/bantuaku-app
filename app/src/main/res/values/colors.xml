@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#1E84CF</color>
     <color name="colorAccent">#16E1F5</color>
     <color name="White">#FFFFFF</color>
+    <color name="chipBorder">#606060</color>
 </resources>

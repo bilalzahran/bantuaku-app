@@ -14,4 +14,9 @@
         <!--<item name="windowActionBar">false</item>-->
         <!--<item name="android:windowNoTitle">true</item>-->
     </style>
+
+    <style name="chipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textColor">@color/text_chip_color</item>
+        <item name="android:fontFamily">@font/poppins_light</item>
+    </style>
 </resources>

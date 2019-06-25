@@ -57,5 +57,8 @@
     <string name="input_deskripsi_bantuan">Deskripsi Pekerjaan</string>
     <string name="bayaran">Bayaran</string>
     <string name="rupiah">Rp.</string>
-    <string name="target">Target</string>
+    <string name="rupiah_hint">0</string>
+    <string name="target_date">Target</string>
+    <string name="target_date_hint">24/04/2019</string>
+    <string name="kirim">Kirim</string>
 </resources>
