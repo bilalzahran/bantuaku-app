@@ -9,22 +9,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.team9.bantuaku.Model.Bantuan;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class AddTaskFragment extends Fragment {
-    EditText dateedittext;
+    EditText dateedittext,et_judul,et_deskripsi,et_fee;
     Calendar myCalendar;
-    ChipGroup keahlian;
+    ChipGroup cp_keahlian;
+    Button kirim;
+    FirebaseDatabase database;
+    FirebaseUser User;
+    DatabaseReference mRef;
+    List<String> keahlian = new ArrayList<>();
     DatePickerDialog.OnDateSetListener date;
     @Nullable
     @Override
@@ -39,23 +55,20 @@ public class AddTaskFragment extends Fragment {
 
         //Component Init
         dateedittext = (EditText)view.findViewById(R.id.target_date);
-        keahlian = (ChipGroup)view.findViewById(R.id.chip_keahlian);
+        cp_keahlian = (ChipGroup)view.findViewById(R.id.chip_keahlian);
+        kirim = (Button)view.findViewById(R.id.btn_kirim);
+        et_judul = (EditText)view.findViewById(R.id.et_judul_pekerjaan);
+        et_deskripsi = (EditText)view.findViewById(R.id.et_deskripsi_pekerjaan);
+        et_fee = (EditText)view.findViewById(R.id.et_fee);
 
+        //Firebase init
+        User = FirebaseAuth.getInstance().getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        mRef = database.getReference("bantuan");
         //Set Chip in Chipgroup keahlian
-        String[] keahlian_array = getResources().getStringArray(R.array.keahlian);
+        setChip(cp_keahlian,view);
 
-        for(int i = 0;i<keahlian_array.length;i++){
-            Chip chip = new Chip(view.getContext());
-            chip.setText(keahlian_array[i]);
-            chip.setCheckable(true);
-            //chip.setTextColor(getResources().getColor(R.color.text_chip_color));
-            chip.setTextAppearanceResource(R.style.chipText);
-            chip.setChipBackgroundColorResource(R.color.bg_chip_color);
-            chip.setChipStrokeColorResource(R.color.stroke_chip_color);
-            chip.setChipStrokeWidth(2);
-            keahlian.addView(chip);
-        }
-
+        //Date Selecting
         date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -64,6 +77,7 @@ public class AddTaskFragment extends Fragment {
             }
         };
 
+        //Edit Text Date
         dateedittext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,11 +85,56 @@ public class AddTaskFragment extends Fragment {
                 .show();
             }
         });
+        //Button kirim action
+        kirim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String deskripsi,deadline,judul,tanggal;
+                Integer fee;
+                List<String> idTalent = new ArrayList<>();
+                judul = et_judul.getText().toString();
+                deskripsi = et_deskripsi.getText().toString();
+                fee = Integer.valueOf(et_fee.getText().toString());
+                deadline = dateedittext.getText().toString();
+                idTalent.add("");
+                tanggal = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+                Bantuan newbantuan = new Bantuan(User.getUid(),judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal);
+                mRef.push().setValue(newbantuan);
+            }
+        });
+        //Chipgroup get selected chip
+        for(int i=0;i < cp_keahlian.getChildCount();i++){
+            Chip chip = cp_keahlian.findViewById(i);
+            chip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        keahlian.add(buttonView.getText().toString());
+                    }else{
+                        keahlian.remove(buttonView.getText().toString());
+                    }
+                }
+            });
+        }
+
 
         return view;
     }
-    private void setChip(ChipGroup chipgroup){
+    private void setChip(ChipGroup chipgroup,View view){
+        String[] keahlian_array = getResources().getStringArray(R.array.keahlian);
 
+        for(int i = 0;i<keahlian_array.length;i++){
+            Chip chip = new Chip(view.getContext());
+            chip.setText(keahlian_array[i]);
+            chip.setId(i);
+            chip.setCheckable(true);
+            chip.setTextAppearanceResource(R.style.chipText);
+            chip.setChipBackgroundColorResource(R.color.bg_chip_color);
+            chip.setChipStrokeColorResource(R.color.stroke_chip_color);
+            chip.setChipStrokeWidth(2);
+            chipgroup.addView(chip);
+        }
     }
     private void updateLabel(){
         String format = "dd/MM/yyyy";
