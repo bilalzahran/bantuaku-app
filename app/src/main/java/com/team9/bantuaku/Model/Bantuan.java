@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bantuan {
+    private String namaUser;
     private String idUser;
     private String judul;
     private String deskripsi;
@@ -15,7 +16,11 @@ public class Bantuan {
     private Integer bayaran;
     private String tanggal;
 
-    public Bantuan(String idUser, String judul, String deskripsi, List<String> keahlian, List<String> idTalent, String deadline, Integer bayaran, String tanggal) {
+    public Bantuan(){
+
+    }
+    public Bantuan(String idUser, String namaUser, String judul, String deskripsi, List<String> keahlian, List<String> idTalent, String deadline, Integer bayaran, String tanggal) {
+        this.namaUser = namaUser;
         this.idUser = idUser;
         this.judul = judul;
         this.deskripsi = deskripsi;
@@ -54,16 +59,16 @@ public class Bantuan {
         return keahlian;
     }
 
-    public void setKeahlian(String keahlian) {
-        this.keahlian.add(keahlian);
+    public void setKeahlian(List<String> keahlian) {
+        this.keahlian = keahlian;
     }
 
     public List<String> getIdTalent() {
         return idTalent;
     }
 
-    public void setIdTalent(String idTalent) {
-        this.idTalent.add(idTalent);
+    public void setIdTalent(List<String> idTalent) {
+        this.idTalent = idTalent;
     }
 
     public String getDeadline() {
@@ -88,5 +93,18 @@ public class Bantuan {
 
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
+    }
+    public String getNamaUser() {
+        return namaUser;
+    }
+
+    public void setNamaUser(String namaUser) {
+        this.namaUser = namaUser;
+    }
+
+    public String getFirstNameUser(){
+        String firstName;
+        firstName = namaUser.substring(0, namaUser.indexOf(" "));
+        return firstName;
     }
 }

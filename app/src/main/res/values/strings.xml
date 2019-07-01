@@ -61,4 +61,10 @@
     <string name="target_date">Target</string>
     <string name="target_date_hint">24/04/2019</string>
     <string name="kirim">Kirim</string>
+
+    <!--Posting -->
+    <string name="judul_example">Contoh judul task pada listview</string>
+    <string name="nama_example">Nama</string>
+    <string name="tanggal_example">28/21/2019</string>
+    <string name="fee_example">Rp. 50.000</string>
 </resources>

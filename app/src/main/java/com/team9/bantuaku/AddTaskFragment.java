@@ -39,7 +39,7 @@ public class AddTaskFragment extends Fragment {
     Button kirim;
     FirebaseDatabase database;
     FirebaseUser User;
-    DatabaseReference mRef;
+    DatabaseReference mRef,mUser;
     List<String> keahlian = new ArrayList<>();
     DatePickerDialog.OnDateSetListener date;
     @Nullable
@@ -65,6 +65,7 @@ public class AddTaskFragment extends Fragment {
         User = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
         mRef = database.getReference("bantuan");
+        mUser = database.getReference("User").child(User.getUid()); //This code will be remove by SharedPreferance
         //Set Chip in Chipgroup keahlian
         setChip(cp_keahlian,view);
 
@@ -89,17 +90,17 @@ public class AddTaskFragment extends Fragment {
         kirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String deskripsi,deadline,judul,tanggal;
+                String deskripsi,deadline,judul,tanggal,namaUser;
                 Integer fee;
                 List<String> idTalent = new ArrayList<>();
-                judul = et_judul.getText().toString();
+                judul = et_judul.getText(). toString();
                 deskripsi = et_deskripsi.getText().toString();
                 fee = Integer.valueOf(et_fee.getText().toString());
                 deadline = dateedittext.getText().toString();
                 idTalent.add("");
                 tanggal = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-
-                Bantuan newbantuan = new Bantuan(User.getUid(),judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal);
+                namaUser = "Bilal Zahran Aufa";
+                Bantuan newbantuan = new Bantuan(User.getUid(),namaUser,judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal);
                 mRef.push().setValue(newbantuan);
             }
         });

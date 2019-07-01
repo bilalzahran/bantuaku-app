@@ -180,7 +180,6 @@
             android:text="@string/sudah_punya_akun"
             android:fontFamily="@font/poppins_medium"
             android:textSize="16sp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
