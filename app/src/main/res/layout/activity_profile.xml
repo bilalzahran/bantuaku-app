@@ -56,7 +56,7 @@
                     app:civ_border_color="@color/White"
                     android:id="@+id/poto_profile"
                     app:civ_circle_background_color="#FFC0C0C0"
-                    />
+                />
                 <TextView
                     android:id="@+id/nama_profile"
                     android:layout_width="wrap_content"
@@ -130,7 +130,7 @@
                     android:layout_marginLeft="20dp"
                     android:text="Biografi"
                     android:textStyle="bold"
-                    android:textColor="#000000"
+                    android:textColor="@color/colorPrimary"
                     />
                 <TextView
                     android:id="@+id/biografi"
@@ -147,7 +147,7 @@
                     android:text="Keahlian"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
                     />
 

@@ -33,41 +33,38 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pekerjaan :"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/person"
+            app:civ_circle_background_color="#FFC0C0C0"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/White"
+            android:id="@+id/poto_posting"
+            android:layout_gravity="center"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="3"
-            android:background="@drawable/edittext_shape"
-            android:layout_marginTop="5dp"
-            android:id="@+id/edittext_pekerjaan"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deskripsi :"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:hint="Tulis Nama Pekerjaan..  "
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginTop="14dp"
             />
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:lines="3"
-            android:background="@drawable/edittext_shape"
-            android:layout_marginTop="5dp"
-            android:id="@+id/edittext_deskripsi"/>
+            android:layout_height="wrap_content"
+            android:hint="Tambahkan Deskripsi.."
+            android:textColorHint="@color/colorPrimary"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
             android:text="Keahlian"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorPrimary"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -136,9 +133,70 @@
                 android:background="@drawable/button_keahlian_posting"
                 android:id="@+id/business"
                 />
-
+            <Button
+                android:layout_width="81dp"
+                android:layout_height="30dp"
+                android:text="DESIGNER"
+                android:layout_below="@id/backend"
+                android:layout_toRightOf="@id/business"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/design"
+                android:background="@drawable/button_keahlian_posting"
+                />
 
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bayaran"
+            android:layout_marginTop="17dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Rp"
+                android:layout_marginTop="5dp"
+                android:textSize="14sp"
+                />
+            <EditText
+                android:layout_width="85dp"
+                android:layout_height="25dp"
+                android:background="@drawable/button_keahlian_posting"
+                android:hint="50.000"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/bayaran"
+                android:textSize="12sp"
+                android:paddingLeft="6dp"
+                />
+
+        </LinearLayout>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Target"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/outline-insert_invitation-24px"
+                android:background="@color/colorPrimary"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
