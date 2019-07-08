@@ -1,11 +1,14 @@
 package com.team9.bantuaku;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +44,10 @@ public class AddTaskFragment extends Fragment {
     FirebaseUser User;
     DatabaseReference mRef,mUser;
     List<String> keahlian = new ArrayList<>();
+    List<String> idTalent = new ArrayList<>();
     DatePickerDialog.OnDateSetListener date;
+    static String deskripsi,deadline,judul,tanggal,namaUser,TAG="AddTaskFragment";
+    static Integer fee;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -61,7 +67,7 @@ public class AddTaskFragment extends Fragment {
         et_deskripsi = (EditText)view.findViewById(R.id.et_deskripsi_pekerjaan);
         et_fee = (EditText)view.findViewById(R.id.et_fee);
 
-        //Firebase init
+        //Firebase init\
         User = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
         mRef = database.getReference("bantuan");
@@ -90,20 +96,18 @@ public class AddTaskFragment extends Fragment {
         kirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String deskripsi,deadline,judul,tanggal,namaUser;
-                Integer fee;
-                List<String> idTalent = new ArrayList<>();
-                judul = et_judul.getText(). toString();
+                judul = et_judul.getText().toString();
                 deskripsi = et_deskripsi.getText().toString();
                 fee = Integer.valueOf(et_fee.getText().toString());
                 deadline = dateedittext.getText().toString();
                 idTalent.add("");
                 tanggal = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 namaUser = "Bilal Zahran Aufa";
-                Bantuan newbantuan = new Bantuan(User.getUid(),namaUser,judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal);
-                mRef.push().setValue(newbantuan);
+                DialogAddTask dialog = new DialogAddTask();
+                dialog.show(getFragmentManager(),"dialogBottomSheetAddtask");
             }
         });
+
         //Chipgroup get selected chip
         for(int i=0;i < cp_keahlian.getChildCount();i++){
             Chip chip = cp_keahlian.findViewById(i);
@@ -142,5 +146,14 @@ public class AddTaskFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
 
         dateedittext.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    public void addTask(){
+        Log.i(TAG,"Masukkk");
+        database = FirebaseDatabase.getInstance();
+        User = FirebaseAuth.getInstance().getCurrentUser();
+        mRef = database.getReference("bantuan");
+        Bantuan newbantuan = new Bantuan(User.getUid(),namaUser,judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal);
+        mRef.push().setValue(newbantuan);
     }
 }

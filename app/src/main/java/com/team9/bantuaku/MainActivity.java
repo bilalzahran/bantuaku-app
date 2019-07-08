@@ -1,5 +1,6 @@
 package com.team9.bantuaku;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
@@ -10,15 +11,16 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, DialogAddTask.AddTaskDialogListener {
     private TextView mTextMessage;
     private FirebaseAuth mAuth;
-
+    private AddTaskFragment addTaskFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loadFragment(new TaskListFragment());
+        addTaskFragment = new AddTaskFragment();
         BottomNavigationView navmenu = findViewById(R.id.nav_view);
         navmenu.setOnNavigationItemSelectedListener(this);
         mAuth = FirebaseAuth.getInstance();
@@ -50,5 +52,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
         }
         return loadFragment(fragment);
+    }
+
+    @Override
+    public void onButtonKirimClicked() {
+        addTaskFragment.addTask();
+
+        Intent intent = new Intent(this,AddTaskConfirmation.class);
+        startActivity(intent);
     }
 }

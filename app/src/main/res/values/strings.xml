@@ -45,7 +45,7 @@
     <string name="keahlian">Keahlian</string>
     <string name="edit_profil">Edit Profil</string>
     <string name="keluar">Keluar</string>
-   <!--Edit foto profil-->
+    <!--Edit foto profil-->
     <string name="edit_foto_profil">Edit Foto Profil</string>
     <string name="hapus_foto">Hapus Foto Profil</string>
     <string name="ambil_gallery">Upload Foto dari Galeri</string>
@@ -67,4 +67,11 @@
     <string name="nama_example">Nama</string>
     <string name="tanggal_example">28/21/2019</string>
     <string name="fee_example">Rp. 50.000</string>
+    <string name="berhasil_mengirim">Berhasil Mengirim</string>
+    <string name="add_task_done_desc">Silahkan lihat status notifikasi anda</string>
+    <!--Message-->
+    <string name="message_addtask">Ingin kirim bantuan?</string>
+    <string name="btn_batal">Batal</string>
+    <string name="btn_kirim">Kirim</string>
+
 </resources>
