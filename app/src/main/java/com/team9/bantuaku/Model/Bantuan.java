@@ -16,6 +16,8 @@ public class Bantuan {
     private Integer bayaran;
     private String tanggal;
 
+    private String status;
+
     public Bantuan(){
 
     }
@@ -29,6 +31,7 @@ public class Bantuan {
         this.deadline = deadline;
         this.bayaran = bayaran;
         this.tanggal = tanggal;
+        this.status = "Waiting Confirmation";
     }
 
     public String getIdUser() {
@@ -106,5 +109,12 @@ public class Bantuan {
         String firstName;
         firstName = namaUser.substring(0, namaUser.indexOf(" "));
         return firstName;
+    }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

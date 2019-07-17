@@ -15,33 +15,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.ViewHolder> {
-    private Context context;
-    private List<Bantuan> listBantuan;
+    private List<Bantuan> listBantuan = new ArrayList<>();
+    private OnBantuanListener onBantuanListener;
 
-    public BantuanAdapter(Context context){
-        this.context = context;
-        listBantuan = new ArrayList<>();
+    public BantuanAdapter(OnBantuanListener onBantuanListener){
+        this.onBantuanListener = onBantuanListener;
     }
 
     public void setData(List<Bantuan> listBantuan){
         this.listBantuan = listBantuan;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public BantuanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.bantuan_list, parent, false);
-        return new ViewHolder(v);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bantuan_list, parent, false);
+        return new ViewHolder(view,onBantuanListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BantuanAdapter.ViewHolder holder, int position) {
         Bantuan bantuan = listBantuan.get(position);
 
+        String rp = "Rp.";
         holder.tv_nama.setText(bantuan.getFirstNameUser());
         holder.tv_judul_bantuan.setText(bantuan.getJudul());
         holder.tv_tanggal.setText(bantuan.getDeadline());
-        holder.tv_fee.setText("Rp."+ bantuan.getBayaran().toString());
+        holder.tv_fee.setText(String.valueOf(bantuan.getBayaran()));
     }
 
     @Override
@@ -49,14 +50,25 @@ public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.ViewHold
         return listBantuan.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView tv_nama,tv_judul_bantuan,tv_tanggal,tv_fee;
-        public ViewHolder(@NonNull View itemView){
+        OnBantuanListener onBantuanListener;
+        public ViewHolder(@NonNull View itemView, OnBantuanListener onBantuanListener){
             super(itemView);
             tv_nama = itemView.findViewById(R.id.tv_nama);
             tv_judul_bantuan = itemView.findViewById(R.id.tv_judul_bantuan);
             tv_tanggal = itemView.findViewById(R.id.tv_tanggal);
             tv_fee = itemView.findViewById(R.id.tv_fee);
+            this.onBantuanListener = onBantuanListener;
+            itemView.setOnClickListener(this);
+        }
+        @Override
+        public void onClick(View v) {
+            onBantuanListener.onItemClick(getAdapterPosition());
         }
     }
+    public interface OnBantuanListener{
+        void onItemClick(int position);
+    }
+
 }

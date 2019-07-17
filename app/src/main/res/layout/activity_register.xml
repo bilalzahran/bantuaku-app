@@ -49,7 +49,7 @@
                     android:id="@+id/etNama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/person"
+                    android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="10dp"
                     android:hint="@string/nama"
                     android:fontFamily="@font/poppins_medium"
@@ -75,7 +75,7 @@
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/email"
+                    android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="10dp"
                     android:hint="@string/email"
                     android:fontFamily="@font/poppins_medium"
@@ -101,7 +101,7 @@
                     android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/phone"
+                    android:drawableStart="@drawable/ic_phone"
                     android:drawablePadding="10dp"
                     android:hint="@string/no_telepon"
                     android:fontFamily="@font/poppins_medium"
@@ -127,7 +127,7 @@
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/password"
+                    android:drawableStart="@drawable/ic_password"
                     android:drawablePadding="10dp"
                     android:hint="@string/kata_sandi"
                     android:fontFamily="@font/poppins_medium"
@@ -145,12 +145,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tilRepassword">
+                android:id="@+id/tilRepassword"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/password_conf"
+                    android:drawableStart="@drawable/ic_password_conf"
                     android:drawablePadding="10dp"
                     android:id="@+id/etRePassword"
                     android:inputType="textPassword"

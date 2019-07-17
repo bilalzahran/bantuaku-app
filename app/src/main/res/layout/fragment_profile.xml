@@ -77,7 +77,7 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     app:strokeColor="@color/colorPrimary"
                     android:text="@string/edit_profil"
-                    app:icon="@drawable/button_setting"
+                    app:icon="@drawable/ic_settings"
                     app:strokeWidth="2dp"/>
                 <LinearLayout
                     android:layout_width="match_parent"

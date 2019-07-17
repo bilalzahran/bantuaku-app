@@ -74,4 +74,8 @@
     <string name="btn_batal">Batal</string>
     <string name="btn_kirim">Kirim</string>
 
+    <!--Detail-->
+    <string name="detail">Detail</string>
+    <string name="cari_bantuan">Cari Bantuan</string>
+
 </resources>

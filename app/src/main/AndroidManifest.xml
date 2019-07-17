@@ -21,7 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddTaskConfirmation"></activity>
+        <activity android:name=".DetailBantuan"
+            android:theme="@style/NoActionBar"/>
+        <activity
+            android:name=".AddTaskConfirmation"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".EditProfile"
             android:exported="true"
