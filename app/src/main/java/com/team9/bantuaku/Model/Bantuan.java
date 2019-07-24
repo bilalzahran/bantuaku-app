@@ -6,22 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bantuan {
+    private String id;
     private String namaUser;
     private String idUser;
     private String judul;
     private String deskripsi;
-    private List<String> keahlian = new ArrayList<>();
+    private String keahlian;
     private List<String> idTalent = new ArrayList<>();
     private String deadline;
     private Integer bayaran;
     private String tanggal;
-
+    private String tanggalpost;
     private String status;
 
     public Bantuan(){
 
     }
-    public Bantuan(String idUser, String namaUser, String judul, String deskripsi, List<String> keahlian, List<String> idTalent, String deadline, Integer bayaran, String tanggal) {
+    public Bantuan(String idUser, String namaUser, String judul, String deskripsi, String keahlian, List<String> idTalent,
+                   String deadline, Integer bayaran, String tanggal, String tanggal_post) {
         this.namaUser = namaUser;
         this.idUser = idUser;
         this.judul = judul;
@@ -31,6 +33,7 @@ public class Bantuan {
         this.deadline = deadline;
         this.bayaran = bayaran;
         this.tanggal = tanggal;
+        this.tanggalpost = tanggal_post;
         this.status = "Waiting Confirmation";
     }
 
@@ -58,11 +61,11 @@ public class Bantuan {
         this.deskripsi = deskripsi;
     }
 
-    public List<String> getKeahlian() {
+    public String getKeahlian() {
         return keahlian;
     }
 
-    public void setKeahlian(List<String> keahlian) {
+    public void setKeahlian(String keahlian) {
         this.keahlian = keahlian;
     }
 
@@ -116,5 +119,13 @@ public class Bantuan {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTanggalPost() {
+        return tanggalpost;
+    }
+
+    public void setTanggalPost(String tanggal_post) {
+        this.tanggalpost = tanggal_post;
     }
 }

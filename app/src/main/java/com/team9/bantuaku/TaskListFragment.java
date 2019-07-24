@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ import com.team9.bantuaku.Model.Bantuan;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskListFragment extends Fragment implements BantuanAdapter.OnBantuanListener {
+public class TaskListFragment extends Fragment {
     private FirebaseDatabase db;
     private DatabaseReference bantuanRef;
     private Query query;
@@ -41,7 +42,7 @@ public class TaskListFragment extends Fragment implements BantuanAdapter.OnBantu
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
 
         //Firebase init
@@ -57,9 +58,25 @@ public class TaskListFragment extends Fragment implements BantuanAdapter.OnBantu
 
         //Adapter
         getBantuan();
-        adapter = new BantuanAdapter(this);
+        adapter = new BantuanAdapter();
         bantuanList.setLayoutManager(new LinearLayoutManager(view.getContext()));
         bantuanList.setAdapter(adapter);
+
+        adapter.setOnBantuanClickListener(new BantuanAdapter.OnBantuanListener() {
+            @Override
+            public void onItemClick(Bantuan bantuan) {
+                Intent intent = new Intent(getContext(),DetailBantuan.class);
+                intent.putExtra(DetailBantuan.EXTRA_NAME, bantuan.getFirstNameUser());
+                intent.putExtra(DetailBantuan.EXTRA_DATE_POST, bantuan.getTanggalPost());
+                intent.putExtra(DetailBantuan.EXTRA_TITLE, bantuan.getJudul());
+                intent.putExtra(DetailBantuan.EXTRA_DESC, bantuan.getDeskripsi());
+                intent.putExtra(DetailBantuan.EXTRA_SKILL, bantuan.getKeahlian());
+                intent.putExtra(DetailBantuan.EXTRA_DATE, bantuan.getDeadline());
+                intent.putExtra(DetailBantuan.EXTRA_FEE, bantuan.getBayaran());
+                intent.putExtra(DetailBantuan.EXTRA_ID_USER,bantuan.getIdUser());
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
@@ -82,9 +99,8 @@ public class TaskListFragment extends Fragment implements BantuanAdapter.OnBantu
         });
     }
 
-    @Override
-    public void onItemClick(int position) {
-        Intent intent = new Intent(this.getContext(),DetailBantuan.class);
-        startActivity(intent);
+    public String joinList(List<String> bantuan){
+        return TextUtils.join(", ",bantuan);
     }
+
 }

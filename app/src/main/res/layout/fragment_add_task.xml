@@ -41,7 +41,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/stock_profile"/>
+                       />
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

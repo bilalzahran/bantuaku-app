@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +25,11 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.team9.bantuaku.Model.Bantuan;
 
 import java.text.SimpleDateFormat;
@@ -43,10 +47,11 @@ public class AddTaskFragment extends Fragment {
     FirebaseDatabase database;
     FirebaseUser User;
     DatabaseReference mRef,mUser;
-    List<String> keahlian = new ArrayList<>();
+    List<String> keahlianlist = new ArrayList<>();
     List<String> idTalent = new ArrayList<>();
     DatePickerDialog.OnDateSetListener date;
-    static String deskripsi,deadline,judul,tanggal,namaUser,TAG="AddTaskFragment";
+    static String deskripsi,deadline,judul,tanggal,namaUser,TAG="AddTaskFragment",dateNow;
+    static String keahlian;
     static Integer fee;
     @Nullable
     @Override
@@ -101,29 +106,28 @@ public class AddTaskFragment extends Fragment {
                 fee = Integer.valueOf(et_fee.getText().toString());
                 deadline = dateedittext.getText().toString();
                 idTalent.add("");
-                tanggal = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                namaUser = "Bilal Zahran Aufa";
+                keahlian = TextUtils.join(", ",keahlianlist);
+                tanggal = dateedittext.getText().toString();
+                namaUser = "Bilal Zahran";
+                dateNow = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 DialogAddTask dialog = new DialogAddTask();
                 dialog.show(getFragmentManager(),"dialogBottomSheetAddtask");
             }
         });
-
         //Chipgroup get selected chip
         for(int i=0;i < cp_keahlian.getChildCount();i++){
             Chip chip = cp_keahlian.findViewById(i);
             chip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(isChecked){
-                        keahlian.add(buttonView.getText().toString());
-                    }else{
-                        keahlian.remove(buttonView.getText().toString());
-                    }
+                if(isChecked){
+                    keahlianlist.add(buttonView.getText().toString());
+                }else{
+                    keahlianlist.remove(buttonView.getText().toString());
+                }
                 }
             });
         }
-
-
         return view;
     }
     private void setChip(ChipGroup chipgroup,View view){
@@ -149,11 +153,30 @@ public class AddTaskFragment extends Fragment {
     }
 
     public void addTask(){
-        Log.i(TAG,"Masukkk");
         database = FirebaseDatabase.getInstance();
         User = FirebaseAuth.getInstance().getCurrentUser();
         mRef = database.getReference("bantuan");
-        Bantuan newbantuan = new Bantuan(User.getUid(),namaUser,judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal);
+        Bantuan newbantuan = new Bantuan(User.getUid(),namaUser,judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal,dateNow);
         mRef.push().setValue(newbantuan);
+    }
+
+    public String getDateNow(){
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(c);
+    }
+    public String getUserName(){
+        final String[] username = {""};
+        mUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                username[0] = dataSnapshot.child("nama").toString();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(getTag(),"Error retrieving username");
+            }
+        });
+        return username[0];
     }
 }

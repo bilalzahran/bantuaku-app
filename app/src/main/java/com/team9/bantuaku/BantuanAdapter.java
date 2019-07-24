@@ -16,22 +16,17 @@ import java.util.List;
 
 public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.ViewHolder> {
     private List<Bantuan> listBantuan = new ArrayList<>();
-    private OnBantuanListener onBantuanListener;
-
-    public BantuanAdapter(OnBantuanListener onBantuanListener){
-        this.onBantuanListener = onBantuanListener;
-    }
+    private OnBantuanListener listener;
 
     public void setData(List<Bantuan> listBantuan){
         this.listBantuan = listBantuan;
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public BantuanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bantuan_list, parent, false);
-        return new ViewHolder(view,onBantuanListener);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -50,25 +45,32 @@ public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.ViewHold
         return listBantuan.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_nama,tv_judul_bantuan,tv_tanggal,tv_fee;
         OnBantuanListener onBantuanListener;
-        public ViewHolder(@NonNull View itemView, OnBantuanListener onBantuanListener){
+        public ViewHolder(@NonNull View itemView){
             super(itemView);
             tv_nama = itemView.findViewById(R.id.tv_nama);
             tv_judul_bantuan = itemView.findViewById(R.id.tv_judul_bantuan);
             tv_tanggal = itemView.findViewById(R.id.tv_tanggal);
             tv_fee = itemView.findViewById(R.id.tv_fee);
-            this.onBantuanListener = onBantuanListener;
-            itemView.setOnClickListener(this);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION){
+                        listener.onItemClick(listBantuan.get(position));
+                    }
+                }
+            });
         }
-        @Override
-        public void onClick(View v) {
-            onBantuanListener.onItemClick(getAdapterPosition());
-        }
-    }
-    public interface OnBantuanListener{
-        void onItemClick(int position);
     }
 
+    public interface OnBantuanListener{
+        void onItemClick(Bantuan bantuan);
+    }
+    public void setOnBantuanClickListener(OnBantuanListener listener){
+        this.listener = listener;
+    }
 }
