@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="8dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,22 +42,14 @@
                     android:fontFamily="@font/poppins_medium"
                     android:text="@string/judul_example"
                     android:textSize="16sp"/>
-                <LinearLayout
-                    android:id="@+id/keahlian_tv"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/fb_keahlian"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Keahlian1"
-                        android:padding="8dp"
-                        android:background="@drawable/keahlian_textview_background"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textColor="@color/White"
-                        android:layout_marginRight="5dp"/>
-                </LinearLayout>
+                    app:flexWrap="wrap"
+                    app:flexDirection="row">
+
+                </com.google.android.flexbox.FlexboxLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

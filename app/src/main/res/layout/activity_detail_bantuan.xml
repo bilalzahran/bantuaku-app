@@ -54,7 +54,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical">
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_photo"
                     android:layout_width="wrap_content"
@@ -119,7 +118,6 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/tv_deskripsi"
                     android:layout_width="wrap_content"
@@ -139,39 +137,15 @@
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/keahlian"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/keahlian_textview_background"
-                        android:fontFamily="@font/poppins_medium"
-                        android:padding="8dp"
-                        android:text="Programmer"
-                        android:textAlignment="center"
-                        android:textColor="@color/White"
-                        android:textStyle="bold" />
+                    app:flexWrap="wrap"
+                    app:flexDirection="row">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:width="80dp"
-                        android:background="@drawable/keahlian_textview_background"
-                        android:fontFamily="@font/poppins_medium"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="UI/UX"
-                        android:textAlignment="center"
-                        android:textColor="@color/White"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                </com.google.android.flexbox.FlexboxLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -220,6 +194,7 @@
                         android:text="200000"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@color/colorPrimary" />
+
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
