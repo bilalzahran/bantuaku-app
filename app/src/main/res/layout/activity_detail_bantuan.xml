@@ -200,6 +200,7 @@
         </ScrollView>
     </FrameLayout>
     <FrameLayout
+        android:id="@+id/frame_bantu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">

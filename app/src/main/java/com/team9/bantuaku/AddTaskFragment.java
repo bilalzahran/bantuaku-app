@@ -130,6 +130,8 @@ public class AddTaskFragment extends Fragment {
         }
         return view;
     }
+
+    // Helper Function & Procedure
     private void setChip(ChipGroup chipgroup,View view){
         String[] keahlian_array = getResources().getStringArray(R.array.keahlian);
 
@@ -179,4 +181,20 @@ public class AddTaskFragment extends Fragment {
         });
         return username[0];
     }
+//    public String getChildValue(DatabaseReference reference, String child){
+//        DatabaseReference ref = reference.child(child);
+//        String data;
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                data = dataSnapshot.getValue(String.class);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 }

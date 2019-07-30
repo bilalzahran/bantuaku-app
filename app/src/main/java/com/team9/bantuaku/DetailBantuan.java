@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +64,7 @@ public class DetailBantuan extends AppCompatActivity {
         TextView btnBantu = findViewById(R.id.btn_bantu);
         FlexboxLayout layout= findViewById(R.id.keahlian);
         CircleImageView ivProfile = findViewById(R.id.iv_photo);
+        FrameLayout frameBantu = findViewById(R.id.frame_bantu);
 
         //Firebase User
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -76,10 +78,10 @@ public class DetailBantuan extends AppCompatActivity {
 
         if(user.getUid().equals(intent.getStringExtra(EXTRA_ID_USER))){
             tvName.setText("You");
-            btnBantu.setVisibility(View.GONE);
+            frameBantu.setVisibility(View.GONE);
         }else{
             tvName.setText(intent.getStringExtra(EXTRA_NAME));
-            btnBantu.setVisibility(View.VISIBLE);
+            frameBantu.setVisibility(View.VISIBLE);
         }
 
         tvDate.setText(intent.getStringExtra(EXTRA_DATE_POST));
