@@ -11,10 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexboxLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
+import com.team9.bantuaku.Helper.FirebaseHelper;
 import com.team9.bantuaku.Helper.ImageHelper;
 import com.team9.bantuaku.Helper.KeahlianHelper;
+import com.team9.bantuaku.Helper.MainHelper;
 import com.team9.bantuaku.Model.Bantuan;
 
 import java.util.ArrayList;
@@ -27,6 +31,11 @@ public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.ViewHold
     private OnBantuanListener listener;
     private ImageHelper imageHelper = new ImageHelper();
     private KeahlianHelper keahlianHelper = new KeahlianHelper();
+    private FirebaseStorage mStorage = FirebaseStorage.getInstance();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference mUser = database.getReference("User");
+    private FirebaseHelper firebaseHelper = new FirebaseHelper();
+    private MainHelper helper = new MainHelper();
 
     public static final String firebaseStorageUrl = "gs://bantuaku-team9.appspot.com/";
 
@@ -34,6 +43,7 @@ public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.ViewHold
         this.listBantuan = listBantuan;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public BantuanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,10 +52,14 @@ public class BantuanAdapter extends RecyclerView.Adapter<BantuanAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BantuanAdapter.ViewHolder holder, int position) {
-        Bantuan bantuan = listBantuan.get(position);
-        FirebaseStorage mStorage = FirebaseStorage.getInstance();
-        holder.tv_nama.setText(bantuan.getFirstNameUser());
+    public void onBindViewHolder(@NonNull final BantuanAdapter.ViewHolder holder, int position) {
+        final Bantuan bantuan = listBantuan.get(position);
+        firebaseHelper.getUsername(new FirebaseHelper.FirebseCallback() {
+            @Override
+            public void getName(String name) {
+                holder.tv_nama.setText(helper.getFirstName(name));
+            }
+        },mUser.child(bantuan.getIdUser()).child("nama"));
         holder.tv_judul_bantuan.setText(bantuan.getJudul());
         holder.tv_tanggal.setText(bantuan.getDeadline());
         holder.tv_fee.setText(String.valueOf(bantuan.getBayaran()));

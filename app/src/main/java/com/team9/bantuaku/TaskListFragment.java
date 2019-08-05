@@ -66,7 +66,7 @@ public class TaskListFragment extends Fragment {
             @Override
             public void onItemClick(Bantuan bantuan) {
                 Intent intent = new Intent(getContext(),DetailBantuan.class);
-                intent.putExtra(DetailBantuan.EXTRA_NAME, bantuan.getFirstNameUser());
+                intent.putExtra(DetailBantuan.EXTRA_NAME, bantuan.getNamaUser());
                 intent.putExtra(DetailBantuan.EXTRA_DATE_POST, bantuan.getTanggalPost());
                 intent.putExtra(DetailBantuan.EXTRA_TITLE, bantuan.getJudul());
                 intent.putExtra(DetailBantuan.EXTRA_DESC, bantuan.getDeskripsi());

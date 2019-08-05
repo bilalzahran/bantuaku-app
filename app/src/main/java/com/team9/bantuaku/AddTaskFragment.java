@@ -158,7 +158,7 @@ public class AddTaskFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         User = FirebaseAuth.getInstance().getCurrentUser();
         mRef = database.getReference("bantuan");
-        Bantuan newbantuan = new Bantuan(User.getUid(),namaUser,judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal,dateNow);
+        Bantuan newbantuan = new Bantuan(User.getUid(),judul,deskripsi,keahlian,idTalent,deadline,fee,tanggal,dateNow);
         mRef.push().setValue(newbantuan);
     }
 
@@ -181,20 +181,4 @@ public class AddTaskFragment extends Fragment {
         });
         return username[0];
     }
-//    public String getChildValue(DatabaseReference reference, String child){
-//        DatabaseReference ref = reference.child(child);
-//        String data;
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                data = dataSnapshot.getValue(String.class);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
 }

@@ -20,11 +20,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+import com.team9.bantuaku.Helper.FirebaseHelper;
 import com.team9.bantuaku.Helper.ImageHelper;
 import com.team9.bantuaku.Helper.KeahlianHelper;
+import com.team9.bantuaku.Helper.MainHelper;
 
 import org.w3c.dom.Text;
 
@@ -42,7 +46,8 @@ public class DetailBantuan extends AppCompatActivity {
     public static final String firebaseStorageUrl = "gs://bantuaku-team9.appspot.com/";
 
     private FirebaseStorage mStorage;
-
+    private FirebaseDatabase database;
+    private DatabaseReference mUser;
     private String keahlian;
     private String idUser;
 
@@ -55,7 +60,7 @@ public class DetailBantuan extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        TextView tvName = findViewById(R.id.tv_name);
+        final TextView tvName = findViewById(R.id.tv_name);
         TextView tvDate = findViewById(R.id.tv_tanggal);
         TextView tvJudul = findViewById(R.id.tv_judul);
         TextView tvDeskripsi = findViewById(R.id.tv_deskripsi);
@@ -68,21 +73,37 @@ public class DetailBantuan extends AppCompatActivity {
 
         //Firebase User
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //Helper
+        FirebaseHelper firebaseHelper = new FirebaseHelper();
+        final MainHelper mainHelper = new MainHelper();
+
         //Firebase Storage
         mStorage = FirebaseStorage.getInstance();
         Intent intent = getIntent();
+
+        //FirebaseDatabase
+        database = FirebaseDatabase.getInstance();
+        mUser = database.getReference("User").child(intent.getStringExtra(EXTRA_ID_USER)).child("nama");
 
         //Helper Initialization
         ImageHelper imageHelper = new ImageHelper();
         KeahlianHelper keahlianHelper = new KeahlianHelper();
 
         if(user.getUid().equals(intent.getStringExtra(EXTRA_ID_USER))){
-            tvName.setText("You");
+            tvName.setText("Anda");
             frameBantu.setVisibility(View.GONE);
         }else{
             tvName.setText(intent.getStringExtra(EXTRA_NAME));
             frameBantu.setVisibility(View.VISIBLE);
         }
+
+        firebaseHelper.getUsername(new FirebaseHelper.FirebseCallback() {
+            @Override
+            public void getName(String name) {
+                tvName.setText(mainHelper.getFirstName(name));
+            }
+        },mUser);
 
         tvDate.setText(intent.getStringExtra(EXTRA_DATE_POST));
         tvJudul.setText(intent.getStringExtra(EXTRA_TITLE));

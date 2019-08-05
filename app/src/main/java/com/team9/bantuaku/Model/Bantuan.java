@@ -22,9 +22,8 @@ public class Bantuan {
     public Bantuan(){
 
     }
-    public Bantuan(String idUser, String namaUser, String judul, String deskripsi, String keahlian, List<String> idTalent,
+    public Bantuan(String idUser, String judul, String deskripsi, String keahlian, List<String> idTalent,
                    String deadline, Integer bayaran, String tanggal, String tanggal_post) {
-        this.namaUser = namaUser;
         this.idUser = idUser;
         this.judul = judul;
         this.deskripsi = deskripsi;
@@ -108,11 +107,6 @@ public class Bantuan {
         this.namaUser = namaUser;
     }
 
-    public String getFirstNameUser(){
-        String firstName;
-        firstName = namaUser.substring(0, namaUser.indexOf(" "));
-        return firstName;
-    }
     public String getStatus() {
         return status;
     }
